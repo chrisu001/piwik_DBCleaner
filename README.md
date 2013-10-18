@@ -1,10 +1,12 @@
-Plugin DBClenaer
+Plugin DBCleaner
 ========================
- 
+
 
 If you want to delete an obsolete website from your Piwik-installation or you want to
 drop already processed log_* entries from your database, but you also want to archive
 those data for later usage, this plugin does the job ;-)
+
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/csuenkel/piwik_DBCleaner/badges/quality-score.png?s=3efc9ea0cc38d580b4e6e612461dad0a51e9571b)](https://scrutinizer-ci.com/g/csuenkel/piwik_DBCleaner/)
 
 
 Features
