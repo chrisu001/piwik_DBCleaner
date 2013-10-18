@@ -1,0 +1,40 @@
+{% extends 'admin.twig' %}
+
+{% block content %}
+<script
+	type="text/javascript"
+	src="plugins/DBCleaner/javascripts/script.js?cb=3"></script>
+	<script
+	type="text/javascript"
+	src="plugins/DBCleaner/javascripts/jquery.progressbar.min.js?cb=3"></script>
+<h2>{{ 'DBCleaner_IndexHeadline'|translate }}</h2>
+
+<script type="text/javascript">
+    $(function() { tabController.init(); });
+</script>
+
+    <div style="max-width: 980px;">
+	<div id="pstabs">
+		<ul>
+		    <li><a id="lnk-tabs-1"  href="{{ selfaction|raw }}cleanup&cb={{ cachebuster}}">{{ 'DBCleaner_TabCleanup'|translate }}</a></li>
+			<li><a id="lnk-tabs-2"  href="{{ selfaction|raw }}history&cb={{ cachebuster}}">{{ 'DBCleaner_TabHistory'|translate }}</a></li>
+			<li><a id="lnk-tabs-2"  href="{{ selfaction|raw }}filelist&cb={{ cachebuster}}">{{ 'DBCleaner_TabFilelist'|translate }}</a></li>
+			<li><a id="lnk-tabs-4"  href="{{ selfaction|raw }}advanced&cb={{ cachebuster}}">{{ 'DBCleaner_TabConfig'|translate }}</a></li>
+		</ul>
+	</div>
+</div>
+
+{%  if onlineavailable %} 
+   <hr />
+   {{ 'DBCleaner_indexonlinerepository'|translate }}<br />
+{% endif %}
+
+{% endblock %}
+    
+
+
+
+
+
+
+

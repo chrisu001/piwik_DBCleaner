@@ -1,0 +1,24 @@
+{
+    "name": "DBCleaner",
+    "description": "Piwik Version 2: dump old raw-log entries to the filesystem as backup or delete/backup a website",
+    "version": "0.3.1",
+    "keywords": ["database", "mysql"],
+    "homepage": "http://plugin.suenkel.org",
+    "license": "BSD-3",
+    "author": "Christian Suenkel",
+    "author_email": "piwik@suenkel.de",
+    "author_homepage": "https://plugin.suenkel.de",
+    
+    "authors": [
+        {
+            "name": "Christian Suenkel",
+            "email": "piwik@suenkel.de",
+            "homepage": "http://suenkel.de"
+        }
+    ],
+    "require": {
+        "piwik": ">=2.0,<=2.1",
+        "php": ">=5.3.0"
+    },
+    "translationAvailable": true
+}

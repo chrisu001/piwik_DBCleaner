@@ -1,0 +1,60 @@
+{ 
+ "DBCleaner" : {
+
+  "AdminMenu" : "Database-Cleaner",
+  "Cleanupdescription" : "This tool archives all raw data of the visits to a file. You can always restore them again. The previous evaluations and analytics are not affected.",
+  "CleanupFormerror" : "<b>Error occured</b>",
+  "CleanupHeadline" : "Archive and cleanup old log data",
+  "Cleanuplabel" : "until what date should be archived?",
+  "Cleanupsubmit" : "create archive",
+  "ConfigConfirmText" : "The changes have been successfully applied",
+  "ConfigConfirmTitle" : "Changes applied",
+  "ConfigConfirmYes" : "Ok",
+  "Configdescription" : "Here you can enter the directory to store your archive files.<br/>With a leading \"/\" an absolute path is used, else within your piwik installation.",
+  "ConfigFormerror" : "<b>An error has occurred</b>",
+  "ConfigHeadline" : "Preferences",
+  "Configlabel" : "Directory:",
+  "Confignodir" : "The directory cannot be created or is not writable",
+  "ConfigOptimize" : "optimize tables",
+  "ConfigOptimizedescription" : "the tables in the database can be optimized after a cleanup process to improve the performance",
+  "ConfigOptimizeHeadline" : "optimize tables",
+  "ConfigOptimizeSubmit" : "Start",
+  "ConfigSubmit" : "Change directory",
+  "Description" : "History and cleanup your Piwik-Database. Delete single Websites and dump the entries to the filesystem",
+  "errortime" : "the timeformat is invalid<br/>
+Examples:
+<ul>
+<li>2013-04-21</li>
+<li>yesterday</li>
+<li>-20 days</li>
+</ul>",
+  "Filelistdownload" : "download",
+  "FilelistHeadline" : "Backup Files",
+  "Filelistnofiles" : "no backup files available yet",
+  "Filelistthcreated" : "created at",
+  "Filelistthfilename" : "Filename",
+  "Filelistthfilesize" : "Filesize",
+  "HistoryConfirmNo" : "no, leave it as is",
+  "HistoryConfirmText" : "Do you really want to disable the website and dump the visitors log to the filesystem?",
+  "HistoryConfirmTitle" : "Create Archive:",
+  "HistoryConfirmYes" : "yes",
+  "Historydescription" : "With this tool, the log data from a website can be archived and deleted in the database then.",
+  "Historyerroridone" : "The site ID 1 cannot be deleted",
+  "Historyerrorlastsite" : "the last remaining website can not be deleted.",
+  "Historyerrornoaccess" : "You have no admin access to this website",
+  "HistoryFormerror" : "Please check your entries",
+  "HistoryHeadline" : "Archive a website",
+  "Historysubmit" : "create Archive",
+  "HistoryWebsite" : "Website",
+  "IndexHeadline" : "Database Cleaner",
+  "indexonlinerepository" : "geting always the latest versions of plugins? Use the <a href=\"http://plugin.suenkel.org\" target=\"_blank\">online repository</a>.",
+  "Progressbarerrornonce" : "Another process is still active<br>Please retry in 30 sec...",
+  "TabCleanup" : "Cleanup",
+  "TabConfig" : "Advanced",
+  "TabFilelist" : "Files",
+  "TabHistory" : "Archive Website",
+  "en" : "English",
+  "trnames" : " Admin (58)"
+  }
+}
+

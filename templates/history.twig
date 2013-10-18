@@ -1,0 +1,84 @@
+<h2>{{ 'DBCleaner_HistoryHeadline'|translate }}</h2>
+
+
+
+{% if error or not dump %}
+<p>{{ 'DBCleaner_Historydescription'|translate }}</p>
+{% if error %}<div class="ui-inline-help ui-state-highlight ui-corner-all" style="margin-top:5px;width:400px">
+<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+{{ 'DBCleaner_HistoryFormerror'|translate }}<br/>{{ error }}</div>{% endif %}
+
+
+<form id="historycleanup" action="{{ selfaction|raw }}history&cb={{ cachebuster }}" method="POST">
+
+<section class="sites_selector_container">
+    <span style="line-height: 30px">{{ 'DBCleaner_HistoryWebsite'|translate }}:</span>
+    {% include "@CoreHome/_siteSelect.twig" with {
+        'idSite': idSiteSelected,
+        'sites': idSitesAvailable,
+        'showAllSitesItem': false,
+        'showSelectedSite': true,
+        'siteSelectorId': "deleteWebisteId",
+        'switchSiteOnSelect': false,
+        'siteName': siteName
+    } %}
+</section>
+
+<input type="hidden" id="deleteId"     name="deleteId"   value="{{ idSiteSelected }}"/>
+<input type="hidden" id="deleteName"   name="deleteName" value=""/>
+<input type="submit" id="submitdelete" name="submit"     value="{{ 'DBCleaner_Historysubmit'|translate }}">
+<div class="ui-confirm" id="confirmDelete">
+    <h2>{{ 'DBCleaner_HistoryConfirmTitle'|translate }} <span id="websiteNameToConfirm"></span></h2>
+    {{ 'DBCleaner_HistoryConfirmText'|translate }}
+    <input id="confirmRemoveSiteYes" role="yes" type="button" value="{{ 'DBCleaner_HistoryConfirmYes'|translate }}" />
+    <input id="confirmRemoveSiteNo"  role="no" type="button" value="{{ 'DBCleaner_HistoryConfirmNo'|translate }}" />
+</div>
+</form>
+
+
+
+<script type="text/javascript">
+// bind selection of website
+$('#deleteWebisteId').bind('piwik:siteSelected', function (e, site) {
+	$('#deleteId').val(site.id);
+	$('#deleteName').val(site.name);
+});
+
+
+/* Submit form -> show confirmation */
+$("#historycleanup").submit(function(e) {
+	$('#websiteNameToConfirm').html($('#deleteName').val());
+	piwikHelper.modalConfirm('#confirmDelete', {
+		yes: function() {
+			tabController.reloadTab(1, '{{ selfaction|raw }}history&deleteId=' + $('#deleteId').val());
+		 }       
+	});
+    e.preventDefault();
+    return false;
+});
+PollStatus.abort();
+</script>
+
+
+{% else %}
+{#                     #}
+{# Run Dumperscript    #}
+{#                     #}
+<div id="stbarerror" class="ui-inline-help ui-state-highlight ui-corner-all" style="margin-top:5px;margin-bottom:20px;width:400px; display:none">
+<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span><span id="stbarerrortext"></span></div>
+<span id="stbar" style="margin: 20px;">-</span><span id="stbarinfo"></span>
+
+<script type="text/javascript">
+$(function() { 
+	
+		PollStatus.run('stbar','{{ selfaction|raw }}','{{ nonce }}', function() { 
+			    tabController.silentReloadTab(1, '{{ selfaction|raw }}history&cb={{ cachebuster }}');
+                tabController.reloadFilelist();
+		});
+});
+</script>
+
+{% endif %}
+
+
+

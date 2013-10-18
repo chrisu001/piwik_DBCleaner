@@ -1,0 +1,34 @@
+<h2>{{ 'DBCleaner_FilelistHeadline'|translate }}</h2>
+
+{% if not filelist %}
+{{ 'DBCleaner_Filelistnofiles'|translate }}
+{% else %}
+<table class="dataTable entityTable">
+	<thead>
+		<tr>
+			<th>{{ 'DBCleaner_Filelistthfilename'|translate }}</th>
+			<th>{{ 'DBCleaner_Filelistthfilesize'|translate }}</th>
+			<th>{{ 'DBCleaner_Filelistthcreated'|translate }}</th>
+			<th> </th>
+		</tr>
+	<thead>
+	<tbody>
+	{% for fileinfo in filelist %}
+		<tr>
+			<td>{{ fileinfo.name }}</td>
+			<td>{{ (fileinfo.size / 1024)|number_format(2) }} kB</td>
+			<td>{{ fileinfo.created }}</td>
+			<td><a href="{{ selfaction|raw }}filelist&filename={{ fileinfo.name|url_encode }}">{{ 'DBCleaner_Filelistdownload'|translate }}</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endif %}
+
+
+
+
+
+
+

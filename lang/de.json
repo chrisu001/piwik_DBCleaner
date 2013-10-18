@@ -1,0 +1,62 @@
+{ 
+ "DBCleaner" : {
+
+  "AdminMenu" : "Database-Cleaner",
+  "Cleanupdescription" : "Mit diesem Tool werden alle Roh-Daten der Visits als Datei archiviert. Sie können somit jederzeit wieder hergestellt werden. Die bisherigen Auswertungen sind davon nicht betroffen.",
+  "CleanupFormerror" : "<b>Eingabefehler</b>",
+  "CleanupHeadline" : "Alte Logdaten archivieren",
+  "Cleanuplabel" : "bis zu welchem Datum soll archiviert werden?",
+  "Cleanupsubmit" : "Archiv erstellen",
+  "ConfigConfirmText" : "Die Änderungen wurden erfolgreich übernommen",
+  "ConfigConfirmTitle" : "Änderungen übernommen",
+  "ConfigConfirmYes" : "Ok",
+  "Configdescription" : "Hier können Sie das Dateiverzeichnis eingeben, in das Ihre Archivedateien gespeichert werden sollen.<br/>
+Mit einem führenden \"/\" wird ein absoluter Pfad benutzt, sonst innerhalb Ihrer Piwik-Installation.",
+  "ConfigFormerror" : "<b>Es ist ein Fehler aufgetreten</b>",
+  "ConfigHeadline" : "Einstellungen",
+  "Configlabel" : "Verzeichnispfad:",
+  "Confignodir" : "Das Verzeichnis kann nicht erstellt werden oder ist nicht schreibbar",
+  "ConfigOptimize" : "Datenbankoptimierung",
+  "ConfigOptimizedescription" : "hiermit können die  Tabellen der Datenbank nach einem Cleanup-Prozeß für den beschleunigten Zugriff optimiert werden",
+  "ConfigOptimizeHeadline" : "Tabellen Optimierung",
+  "ConfigOptimizeSubmit" : "Starten",
+  "ConfigSubmit" : "Verzeichnis ändern",
+  "Description" : "History and cleanup your Piwik-Database. Delete single Websites and dump the entries to the filesystem",
+  "errortime" : "das Zeitformat konnte nicht erkannt werden.<br/>
+Beispiele:
+<ul>
+<li>2013-04-21</li>
+<li>yesterday</li>
+<li>-20 days</li>
+</ul>",
+  "Filelistdownload" : "download",
+  "FilelistHeadline" : "Gespeicherte Backup-Dateien",
+  "Filelistnofiles" : "noch keine Backup-Dateien vorhanden",
+  "Filelistthcreated" : "erstellt am",
+  "Filelistthfilename" : "Dateiname",
+  "Filelistthfilesize" : "Dateigröße",
+  "HistoryConfirmNo" : "nein, lieber nicht",
+  "HistoryConfirmText" : "Wollen Sie wirklich die Log-Daten der Website in eine Datei archivieren und damit die Website auch in der Datenbank löschen?",
+  "HistoryConfirmTitle" : "Archiv erstellen:",
+  "HistoryConfirmYes" : "ja",
+  "Historydescription" : "Mit diesem Tool können die Log-Daten einer Website archiviert und in der Datenbank gelöscht werden.",
+  "Historyerroridone" : "Die WebSite ID 1 kann leider nicht gelöscht werden",
+  "Historyerrorlastsite" : "die letzte verbleibende Website kann nicht gelöscht werden.",
+  "Historyerrornoaccess" : "Sie haben keine Admin-Rechte auf diese Website",
+  "HistoryFormerror" : "Bitte überprüfen Sie Ihre Eingaben",
+  "HistoryHeadline" : "Website archivieren",
+  "Historysubmit" : "Archiv erstellen",
+  "HistoryWebsite" : "Webseite",
+  "IndexHeadline" : "Database Cleaner",
+  "indexonlinerepository" : "immer aktuelle Versionen? Nutzen Sie das <a href=\"http://plugin.suenkel.org\" target=\"_blank\">Online-Repository</a>.",
+  "Progressbarerrornonce" : "Ein anderer Prozess ist noch aktiv<br/>
+Bitte versuchen Sie es in ca 30 sek nocheinmal",
+  "TabCleanup" : "Cleanup",
+  "TabConfig" : "Advanced",
+  "TabFilelist" : "Dateien",
+  "TabHistory" : "Website archivieren",
+  "de" : "Deutsch",
+  "trnames" : " Admin (63)"
+  }
+}
+

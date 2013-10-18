@@ -1,0 +1,100 @@
+
+{% if error or  not optimize  %}
+
+{#  Optimze form #}
+<h2>{{ 'DBCleaner_ConfigOptimizeHeadline'|translate }}</h2>
+<p>{{ 'DBCleaner_ConfigOptimizedescription'|translate }}</p>
+
+<form id="formoptimize" action="{{ selfaction|raw }}optimize&cb={{ cachebuster }}" method="POST">
+<label for="optimizesubmit">{{ 'DBCleaner_ConfigOptimize'|translate }}</label>
+<input id="optimizesubmit" type="submit" name="submitoptimize" value="{{ 'DBCleaner_ConfigOptimizeSubmit'|translate }}">
+<input type="hidden" name="optimize" value="1"/>
+</form>
+<hr/>
+{#  Datadir form #}
+<h2>{{ 'DBCleaner_ConfigHeadline'|translate }}</h2>
+<p>{{ 'DBCleaner_Configdescription'|translate }}</p>
+
+<div id="configerror" class="ui-inline-help ui-state-highlight ui-corner-all" style="margin-top:5px;margin-bottom:20px;width:400px; display:none">
+<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+{{ 'DBCleaner_ConfigFormerror'|translate }}<br/>
+<span id="configerrortext"></span>{% if error %}{{ error }}{% endif %}</div>
+
+
+<form id="formconfig" action="{{ selfaction|raw }}advanced&cb={{ cachebuster }}" method="POST">
+<label for="dumpdir">{{ 'DBCleaner_Configlabel'|translate }}</label> <input type="text" id="dumpdir" name="dumpdir" value="{{  dumpdir|escape('html') }}" size="30"/>
+<input id="configsubmit" type="submit" name="submit" value="{{ 'DBCleaner_ConfigSubmit'|translate }}">
+{# confirmation dialog #}
+<div class="ui-confirm" id="confirmConfig">
+    <h2>{{ 'DBCleaner_ConfigConfirmTitle'|translate }} <span id="websiteNameToConfirm"></span></h2>
+    {{ 'DBCleaner_ConfigConfirmText'|translate }}
+    <input id="configconfirm" role="yes" type="button" value="{{ 'DBCleaner_ConfigConfirmYes'|translate }}" />
+</div>
+
+</form>
+
+<script type="text/javascript">
+/* Submit datadir form */
+ $(function () {
+  $("#formconfig").submit(function(e) {
+	$('#optimizesubmit').hide();
+	$('#configsubmit').hide();
+	$('#configerror').hide();
+    $.ajax({
+		'url' : '{{ selfaction|raw }}advanced&path=' + encodeURIComponent($('#dumpdir').val()),
+		'async' : true,
+		'dataType' : 'json',
+		'error' : function(data) {
+			alert ("Error");
+		},
+		'success' : function(data) {
+			// console.log(data);
+			if (data.error) {
+				  $('#configerrortext').html(data.error);
+				  $('#configerror').show();
+			} else {
+				piwikHelper.modalConfirm('#confirmConfig', 
+						{  yes: function () {
+					               tabController.reloadFilelist();
+					            }
+	                    });
+			}
+		}
+   });
+    e.preventDefault();
+    return false;
+  });
+/* submit optimize form*/
+	$("#formoptimize").submit(function(e) {
+		$('#optimizesubmit').hide();
+		$('#configsubmit').hide();
+		$('#configerror').hide();
+	    tabController.reloadTab(3, '{{ selfaction|raw }}optimize&optimize=1');
+	    e.preventDefault();
+	    return false;
+	});
+  
+ });
+
+</script>
+
+{% else %}
+<h2>{{ 'DBCleaner_ConfigOptimizeHeadline'|translate }}</h2>
+{# show progressbar #}
+<div id="stbaradverror" class="ui-inline-help ui-state-highlight ui-corner-all" style="margin-top:5px;margin-bottom:20px;width:400px; display:none">
+<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span><span id="stbaradverrortext"></span></div>
+<span id="stbaradv" style="margin: 20px;width: 310px">-</span><span id="stbaradvinfo"></span>
+
+
+ <script type="text/javascript">
+$(function() { 
+	
+	PollStatus.run('stbaradv','{{ selfaction|raw }}','{{ nonce }}',function() {
+		tabController.silentReloadTab(3, '{{ selfaction|raw }}advanced&optimze=1&cb={{ cachebuster }}');
+        tabController.reloadFilelist();
+	});
+});
+</script>
+ 
+{% endif %}
+ 

@@ -1,0 +1,48 @@
+<h2>{{ 'DBCleaner_CleanupHeadline'|translate }}</h2>
+
+{% if error or not dump %} 
+<p>{{ 'DBCleaner_Cleanupdescription'|translate }}</p>
+
+{% if error %}<div class="ui-inline-help ui-state-highlight ui-corner-all" style="margin-top:5px;margin-bottom:20px;width:400px">
+<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+{{ 'DBCleaner_CleanupFormerror'|translate }}<br/>{{ error }}</div>{% endif %}
+
+<form id="formcleanup" action="{{ selfaction|raw }}cleanup&cb={{ cachebuster }}" method="POST">
+<label for="unitildump">{{ 'DBCleaner_Cleanuplabel'|translate }}</label>	<input type="text" id="untildump" name="until" value="{{ defaultdate|escape('html') }}">
+<input type="submit" name="submit" value="{{ 'DBCleaner_Cleanupsubmit'|translate|escape('html')}}" id="submitcleanup" />
+</form>
+
+<script type="text/javascript">
+/* Submit form */
+$("#formcleanup").submit(function(e) {
+    tabController.reloadTab(0, '{{ selfaction|raw }}cleanup&until=' + encodeURIComponent($(this[0]).val()));
+    e.preventDefault();
+    return false;
+});
+PollStatus.abort();
+</script>
+
+{% else %}
+<div id="stbarcfgerror" class="ui-inline-help ui-state-highlight ui-corner-all" style="margin-top:5px;margin-bottom:20px;width:400px; display:none">
+<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span><span id="stbarcfgerrortext"></span></div>
+<span id="stbarcfg" style="margin: 20px;width: 310px">-</span><span id="stbarcfginfo"></span>
+
+
+<script type="text/javascript">
+$(function() { 
+	
+	PollStatus.run('stbarcfg','{{ selfaction|raw }}','{{ nonce}}',function() {
+		tabController.silentReloadTab(0, '{{ selfaction|raw }}cleanup&cb={{ cachebuster }}');
+        tabController.reloadFilelist();
+	});
+});
+</script>
+
+{% endif %}
+
+
+
+
+
+
+
